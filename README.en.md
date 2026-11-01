@@ -44,7 +44,7 @@ curl -s -H 'authorization: Bearer YOUR_TOKEN' 'https://data.tmd.go.th/nwpapi/v1/
 | API | What it gives you | Key | Working |
 |---|---|---|---|
 | [Air4Thai](https://air4thai.pcd.go.th/webV3/)<br><sub>Pollution Control Department</sub> | Latest AQI, PM2.5, PM10, O3, CO and NO2 from monitoring stations nationwide | no key | ✅ ¹ |
-| [GISTDA PM2.5](https://pm25.gistda.or.th/)<br><sub>GISTDA</sub> | PM2.5 by province from satellite data, including the 24-hour average | no key | 🇹🇭 ² |
+| [GISTDA PM2.5](https://pm25.gistda.or.th/)<br><sub>GISTDA</sub> | PM2.5 by province from satellite data, including the 24-hour average | no key | ✅ |
 
 <details><summary>Example requests</summary>
 

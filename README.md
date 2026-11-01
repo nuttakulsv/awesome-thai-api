@@ -44,7 +44,7 @@ curl -s -H 'authorization: Bearer YOUR_TOKEN' 'https://data.tmd.go.th/nwpapi/v1/
 | API | ใช้ทำอะไร | ต้องใช้ key ไหม | ใช้ได้ไหม |
 |---|---|---|---|
 | [Air4Thai](https://air4thai.pcd.go.th/webV3/)<br><sub>กรมควบคุมมลพิษ</sub> | ค่า AQI, PM2.5, PM10, O3, CO, NO2 ล่าสุดจากสถานีตรวจวัดทั่วประเทศ | ไม่ต้องใช้ key | ✅ ¹ |
-| [GISTDA PM2.5](https://pm25.gistda.or.th/)<br><sub>GISTDA</sub> | ค่าฝุ่น PM2.5 รายจังหวัดจากข้อมูลดาวเทียม รวมค่าเฉลี่ย 24 ชั่วโมง | ไม่ต้องใช้ key | 🇹🇭 ² |
+| [GISTDA PM2.5](https://pm25.gistda.or.th/)<br><sub>GISTDA</sub> | ค่าฝุ่น PM2.5 รายจังหวัดจากข้อมูลดาวเทียม รวมค่าเฉลี่ย 24 ชั่วโมง | ไม่ต้องใช้ key | ✅ |
 
 <details><summary>ตัวอย่างการเรียก</summary>
 
