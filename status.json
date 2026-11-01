@@ -1,0 +1,94 @@
+{
+ "checked": "2026-11-01",
+ "results": {
+  "air4thai": {
+   "ok": true,
+   "detail": "HTTP 200",
+   "note": "cert"
+  },
+  "gistda-pm25": {
+   "ok": true,
+   "detail": "HTTP 200"
+  },
+  "tmd-earthquake": {
+   "ok": true,
+   "detail": "HTTP 200"
+  },
+  "tmd-api": {
+   "ok": true,
+   "detail": "HTTP 200"
+  },
+  "tmd-nwp": {
+   "ok": true,
+   "detail": "HTTP 200"
+  },
+  "thaiwater": {
+   "ok": true,
+   "detail": "HTTP 200"
+  },
+  "ptt-oil": {
+   "ok": true,
+   "detail": "HTTP 200"
+  },
+  "bangchak-oil": {
+   "ok": true,
+   "detail": "HTTP 200"
+  },
+  "bot": {
+   "ok": true,
+   "detail": "HTTP 200"
+  },
+  "bitkub": {
+   "ok": true,
+   "detail": "HTTP 200"
+  },
+  "rd-vat": {
+   "ok": true,
+   "detail": "HTTP 200"
+  },
+  "dbd": {
+   "ok": true,
+   "detail": "HTTP 200"
+  },
+  "data-go-th": {
+   "ok": true,
+   "detail": "HTTP 200"
+  },
+  "data-bangkok": {
+   "ok": true,
+   "detail": "HTTP 200"
+  },
+  "longdo": {
+   "ok": true,
+   "detail": "HTTP 200"
+  },
+  "thailandpost": {
+   "ok": true,
+   "detail": "HTTP 200"
+  },
+  "aiforthai": {
+   "ok": true,
+   "detail": "HTTP 200"
+  },
+  "typhoon": {
+   "ok": true,
+   "detail": "HTTP 200"
+  },
+  "line": {
+   "ok": true,
+   "detail": "HTTP 200"
+  },
+  "omise": {
+   "ok": true,
+   "detail": "HTTP 200"
+  },
+  "scb": {
+   "ok": true,
+   "detail": "HTTP 200"
+  },
+  "kbank": {
+   "ok": true,
+   "detail": "HTTP 200"
+  }
+ }
+}

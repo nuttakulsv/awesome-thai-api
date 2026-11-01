@@ -1,0 +1,180 @@
+{
+  "categories": [
+    { "id": "weather", "th": "สภาพอากาศและภัยพิบัติ", "en": "Weather and disasters" },
+    { "id": "air", "th": "คุณภาพอากาศและฝุ่น PM2.5", "en": "Air quality and PM2.5" },
+    { "id": "water", "th": "น้ำและน้ำท่วม", "en": "Water and floods" },
+    { "id": "energy", "th": "ราคาน้ำมัน", "en": "Fuel prices" },
+    { "id": "money", "th": "การเงินและอัตราแลกเปลี่ยน", "en": "Finance and exchange rates" },
+    { "id": "business", "th": "ภาษีและข้อมูลธุรกิจ", "en": "Tax and company data" },
+    { "id": "opendata", "th": "ข้อมูลเปิดภาครัฐ", "en": "Government open data" },
+    { "id": "maps", "th": "แผนที่และขนส่ง", "en": "Maps and delivery" },
+    { "id": "ai", "th": "ภาษาไทยและ AI", "en": "Thai language and AI" },
+    { "id": "platforms", "th": "แชตและการชำระเงิน", "en": "Messaging and payments" }
+  ],
+  "apis": [
+    {
+      "id": "air4thai", "category": "air", "name": "Air4Thai", "owner": "กรมควบคุมมลพิษ (Pollution Control Department)",
+      "th": "ค่า AQI, PM2.5, PM10, O3, CO, NO2 ล่าสุดจากสถานีตรวจวัดทั่วประเทศ", "en": "Latest AQI, PM2.5, PM10, O3, CO and NO2 from monitoring stations nationwide",
+      "auth": "none", "docs": "https://air4thai.pcd.go.th/webV3/",
+      "example": "curl -s https://air4thai.pcd.go.th/services/getNewAQI_JSON.php",
+      "check": { "url": "https://air4thai.pcd.go.th/services/getNewAQI_JSON.php", "expect": "\"stations\"" }
+    },
+    {
+      "id": "gistda-pm25", "category": "air", "name": "GISTDA PM2.5", "owner": "GISTDA",
+      "th": "ค่าฝุ่น PM2.5 รายจังหวัดจากข้อมูลดาวเทียม รวมค่าเฉลี่ย 24 ชั่วโมง", "en": "PM2.5 by province from satellite data, including the 24-hour average",
+      "auth": "none", "docs": "https://pm25.gistda.or.th/",
+      "example": "curl -s https://pm25.gistda.or.th/rest/getPm25byProvince",
+      "check": { "url": "https://pm25.gistda.or.th/rest/getPm25byProvince", "expect": "\"pm25\"" }
+    },
+    {
+      "id": "tmd-earthquake", "category": "weather", "name": "TMD Earthquake feed", "owner": "กรมอุตุนิยมวิทยา (Thai Meteorological Department)",
+      "th": "รายการแผ่นดินไหวล่าสุดในไทยและภูมิภาค เป็น RSS", "en": "Recent earthquakes in Thailand and the region, as RSS",
+      "auth": "none", "docs": "https://earthquake.tmd.go.th/",
+      "example": "curl -s https://earthquake.tmd.go.th/feed/rss_tmd.xml",
+      "check": { "url": "https://earthquake.tmd.go.th/feed/rss_tmd.xml", "expect": "<rss" }
+    },
+    {
+      "id": "tmd-api", "category": "weather", "name": "TMD Weather API", "owner": "กรมอุตุนิยมวิทยา (Thai Meteorological Department)",
+      "th": "อากาศรายวัน พยากรณ์ 7 วัน ประกาศเตือนภัย ปริมาณฝน แผ่นดินไหว (XML) เอกสารมี uid/ukey ตัวอย่างให้ลอง ใช้จริงควรสมัคร key เอง", "en": "Daily weather, 7-day forecasts, warnings, rainfall, earthquakes (XML). The docs include a sample uid/ukey to try; register your own for real use",
+      "auth": "free-key", "docs": "https://data.tmd.go.th/api/index1.php",
+      "example": "curl -s 'https://data.tmd.go.th/api/WeatherToday/V2/?uid=api&ukey=api12345'",
+      "check": { "url": "https://data.tmd.go.th/api/WeatherToday/V2/?uid=api&ukey=api12345", "expect": "Station" }
+    },
+    {
+      "id": "tmd-nwp", "category": "weather", "name": "TMD NWP Forecast API", "owner": "กรมอุตุนิยมวิทยา (Thai Meteorological Department)",
+      "th": "พยากรณ์อากาศเชิงตัวเลขรายชั่วโมงและรายวัน ระบุพิกัดหรือจังหวัดได้ (JSON)", "en": "Numerical hourly and daily forecasts by coordinates or province (JSON)",
+      "auth": "free-key", "docs": "https://data.tmd.go.th/nwpapi/doc/",
+      "example": "curl -s -H 'authorization: Bearer YOUR_TOKEN' 'https://data.tmd.go.th/nwpapi/v1/forecast/location/hourly/at?lat=13.75&lon=100.5&fields=tc,rh'",
+      "check": { "url": "https://data.tmd.go.th/nwpapi/doc/", "expect": "" }
+    },
+    {
+      "id": "thaiwater", "category": "water", "name": "ThaiWater", "owner": "สถาบันสารสนเทศทรัพยากรน้ำ (HII)",
+      "th": "ระดับน้ำ ปริมาณน้ำในเขื่อน และสถานการณ์น้ำจากสถานีโทรมาตรทั่วประเทศ", "en": "Water levels, dam storage and conditions from telemetry stations nationwide",
+      "auth": "none", "docs": "https://www.thaiwater.net/",
+      "example": "curl -s https://api-v3.thaiwater.net/api/v1/thaiwater30/public/waterlevel_load",
+      "check": { "url": "https://api-v3.thaiwater.net/api/v1/thaiwater30/public/waterlevel_load", "expect": "waterlevel_data" }
+    },
+    {
+      "id": "ptt-oil", "category": "energy", "name": "PTT OR Oil Price", "owner": "ปตท. น้ำมันและการค้าปลีก (PTT OR)",
+      "th": "ราคาน้ำมันขายปลีกวันนี้ของ PTT Station (SOAP)", "en": "Today's retail fuel prices at PTT Station (SOAP)",
+      "auth": "none", "docs": "https://orapiweb.pttor.com/oilservice/OilPrice.asmx",
+      "example": "curl -s https://orapiweb.pttor.com/oilservice/OilPrice.asmx -H 'Content-Type: text/xml; charset=utf-8' -H 'SOAPAction: \"http://www.pttor.com/CurrentOilPrice\"' -d '<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><CurrentOilPrice xmlns=\"http://www.pttor.com\"><Language>TH</Language></CurrentOilPrice></soap:Body></soap:Envelope>'",
+      "check": {
+        "url": "https://orapiweb.pttor.com/oilservice/OilPrice.asmx", "method": "POST",
+        "headers": { "Content-Type": "text/xml; charset=utf-8", "SOAPAction": "\"http://www.pttor.com/CurrentOilPrice\"" },
+        "body": "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><CurrentOilPrice xmlns=\"http://www.pttor.com\"><Language>EN</Language></CurrentOilPrice></soap:Body></soap:Envelope>",
+        "expect": "PRICE"
+      }
+    },
+    {
+      "id": "bangchak-oil", "category": "energy", "name": "Bangchak Oil Price", "owner": "บางจาก คอร์ปอเรชั่น (Bangchak)",
+      "th": "ราคาน้ำมันวันนี้และพรุ่งนี้ของบางจาก (JSON)", "en": "Bangchak fuel prices today and tomorrow (JSON)",
+      "auth": "none", "docs": "https://www.bangchak.co.th/th/oilprice",
+      "example": "curl -s https://oil-price.bangchak.co.th/ApiOilPrice2/th",
+      "check": { "url": "https://oil-price.bangchak.co.th/ApiOilPrice2/th", "expect": "OilPriceID" }
+    },
+    {
+      "id": "bot", "category": "money", "name": "BOT API", "owner": "ธนาคารแห่งประเทศไทย (Bank of Thailand)",
+      "th": "อัตราแลกเปลี่ยน อัตราดอกเบี้ย วันหยุดสถาบันการเงิน และสถิติเศรษฐกิจ สมัครฟรีที่ API portal", "en": "Exchange rates, interest rates, financial institution holidays and economic statistics. Free sign-up on the API portal",
+      "auth": "free-key", "docs": "https://portal.api.bot.or.th/",
+      "example": "",
+      "check": { "url": "https://portal.api.bot.or.th/", "expect": "" }
+    },
+    {
+      "id": "bitkub", "category": "money", "name": "Bitkub Public API", "owner": "Bitkub",
+      "th": "ราคาคริปโตเป็นเงินบาท (ticker, order book, trades) ส่วนที่เป็น public ไม่ต้องใช้ key", "en": "Crypto prices in baht (ticker, order book, trades). The public endpoints need no key",
+      "auth": "none", "docs": "https://github.com/bitkub/bitkub-official-api-docs",
+      "example": "curl -s 'https://api.bitkub.com/api/v3/market/ticker?sym=btc_thb'",
+      "check": { "url": "https://api.bitkub.com/api/v3/market/ticker?sym=btc_thb", "expect": "\"last\"" }
+    },
+    {
+      "id": "rd-vat", "category": "business", "name": "RD VAT Service", "owner": "กรมสรรพากร (Revenue Department)",
+      "th": "ตรวจสอบผู้ประกอบการจดทะเบียนภาษีมูลค่าเพิ่มจากเลขประจำตัวผู้เสียภาษี ได้ชื่อและที่อยู่ (SOAP, username/password เป็น anonymous)", "en": "Look up a VAT-registered business by tax ID: name and address (SOAP, username and password are anonymous)",
+      "auth": "none", "docs": "https://rdws.rd.go.th/serviceRD3/vatserviceRD3.asmx",
+      "example": "curl -s https://rdws.rd.go.th/serviceRD3/vatserviceRD3.asmx -H 'Content-Type: text/xml; charset=utf-8' -H 'SOAPAction: \"https://rdws.rd.go.th/serviceRD3/vatserviceRD3/Service\"' -d '<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><Service xmlns=\"https://rdws.rd.go.th/serviceRD3/vatserviceRD3\"><username>anonymous</username><password>anonymous</password><TIN>TAX_ID_13_DIGITS</TIN><ProvinceCode>0</ProvinceCode><BranchNumber>0</BranchNumber><AmphurCode>0</AmphurCode></Service></soap:Body></soap:Envelope>'",
+      "check": {
+        "url": "https://rdws.rd.go.th/serviceRD3/vatserviceRD3.asmx", "method": "POST",
+        "headers": { "Content-Type": "text/xml; charset=utf-8", "SOAPAction": "\"https://rdws.rd.go.th/serviceRD3/vatserviceRD3/Service\"" },
+        "body": "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><Service xmlns=\"https://rdws.rd.go.th/serviceRD3/vatserviceRD3\"><username>anonymous</username><password>anonymous</password><TIN>0000000000000</TIN><ProvinceCode>0</ProvinceCode><BranchNumber>0</BranchNumber><AmphurCode>0</AmphurCode></Service></soap:Body></soap:Envelope>",
+        "expect": "ServiceResponse"
+      }
+    },
+    {
+      "id": "dbd", "category": "business", "name": "DBD Open Data", "owner": "กรมพัฒนาธุรกิจการค้า (Department of Business Development)",
+      "th": "ข้อมูลนิติบุคคล งบการเงิน และสถิติธุรกิจ บางชุดต้องสมัคร", "en": "Registered companies, financial statements and business statistics. Some datasets need sign-up",
+      "auth": "free-key", "docs": "https://opendata.dbd.go.th/",
+      "example": "",
+      "check": { "url": "https://opendata.dbd.go.th/", "expect": "" }
+    },
+    {
+      "id": "data-go-th", "category": "opendata", "name": "data.go.th (CKAN)", "owner": "สำนักงานพัฒนารัฐบาลดิจิทัล (DGA)",
+      "th": "ค้นชุดข้อมูลเปิดภาครัฐกว่า 40,000 ชุด ผ่าน CKAN API มาตรฐาน", "en": "Search over 40,000 government open datasets through the standard CKAN API",
+      "auth": "none", "docs": "https://data.go.th/",
+      "example": "curl -sG https://data.go.th/api/3/action/package_search --data-urlencode q=โรงพยาบาล -d rows=5",
+      "check": { "url": "https://data.go.th/api/3/action/package_search?rows=1", "expect": "\"success\": true|\"success\":true" }
+    },
+    {
+      "id": "data-bangkok", "category": "opendata", "name": "Bangkok Open Data (CKAN)", "owner": "กรุงเทพมหานคร (BMA)",
+      "th": "ชุดข้อมูลเปิดของกรุงเทพฯ เช่น จุดเสี่ยงน้ำท่วม กล้อง CCTV สวนสาธารณะ ผ่าน CKAN API", "en": "Bangkok's open datasets (flood risk points, CCTV, parks and more) through the CKAN API",
+      "auth": "none", "docs": "https://data.bangkok.go.th/",
+      "example": "curl -sG https://data.bangkok.go.th/api/3/action/package_search --data-urlencode q=สวนสาธารณะ -d rows=5",
+      "check": { "url": "https://data.bangkok.go.th/api/3/action/package_search?rows=1", "expect": "\"success\": true|\"success\":true" }
+    },
+    {
+      "id": "longdo", "category": "maps", "name": "Longdo Map API", "owner": "Metamedia Technology",
+      "th": "แผนที่ประเทศไทย ค้นหาสถานที่ แปลงที่อยู่เป็นพิกัด และเส้นทาง มี free tier", "en": "Maps of Thailand, place search, geocoding and routing, with a free tier",
+      "auth": "free-key", "docs": "https://map.longdo.com/api",
+      "example": "",
+      "check": { "url": "https://map.longdo.com/api", "expect": "" }
+    },
+    {
+      "id": "thailandpost", "category": "maps", "name": "Thailand Post Track & Trace API", "owner": "ไปรษณีย์ไทย (Thailand Post)",
+      "th": "ติดตามสถานะพัสดุด้วยเลขพัสดุ สมัครรับ token ฟรี", "en": "Track parcels by tracking number. Free token on sign-up",
+      "auth": "free-key", "docs": "https://track.thailandpost.co.th/developerGuide",
+      "example": "",
+      "check": { "url": "https://track.thailandpost.co.th/developerGuide", "expect": "" }
+    },
+    {
+      "id": "aiforthai", "category": "ai", "name": "AI for Thai", "owner": "NECTEC",
+      "th": "ตัดคำ แปลภาษา แปลงเสียงเป็นข้อความ อ่านออกเสียงภาษาไทย OCR และอื่นๆ สมัคร key ฟรี", "en": "Thai word segmentation, translation, speech-to-text, Thai text-to-speech, OCR and more. Free key",
+      "auth": "free-key", "docs": "https://www.aiforthai.in.th/",
+      "example": "",
+      "check": { "url": "https://www.aiforthai.in.th/", "expect": "" }
+    },
+    {
+      "id": "typhoon", "category": "ai", "name": "Typhoon", "owner": "SCB 10X",
+      "th": "โมเดลภาษาขนาดใหญ่ที่เก่งภาษาไทย เรียกผ่าน API แบบเดียวกับ OpenAI", "en": "Large language models tuned for Thai, with an OpenAI-compatible API",
+      "auth": "free-key", "docs": "https://opentyphoon.ai/",
+      "example": "",
+      "check": { "url": "https://opentyphoon.ai/", "expect": "" }
+    },
+    {
+      "id": "line", "category": "platforms", "name": "LINE Messaging API", "owner": "LINE",
+      "th": "ทำ LINE bot และส่งข้อความหาผู้ใช้ LINE OA", "en": "Build LINE bots and message your LINE Official Account's users",
+      "auth": "free-key", "docs": "https://developers.line.biz/en/docs/messaging-api/",
+      "example": "",
+      "check": { "url": "https://developers.line.biz/en/docs/messaging-api/", "expect": "" }
+    },
+    {
+      "id": "omise", "category": "platforms", "name": "Opn Payments (Omise)", "owner": "Opn",
+      "th": "รับชำระเงินด้วยบัตร PromptPay โมบายแบงกิ้ง และ TrueMoney มี test key ให้ลอง", "en": "Accept cards, PromptPay, mobile banking and TrueMoney. Test keys available",
+      "auth": "paid", "docs": "https://www.omise.co/docs",
+      "example": "",
+      "check": { "url": "https://www.omise.co/docs", "expect": "" }
+    },
+    {
+      "id": "scb", "category": "platforms", "name": "SCB Open API", "owner": "ธนาคารไทยพาณิชย์ (SCB)",
+      "th": "QR payment, ตรวจสลิป และบริการธนาคารอื่นๆ มี sandbox ให้ทดสอบ", "en": "QR payments, slip verification and other banking services, with a sandbox",
+      "auth": "free-key", "docs": "https://developer.scb/",
+      "example": "",
+      "check": { "url": "https://developer.scb/", "expect": "" }
+    },
+    {
+      "id": "kbank", "category": "platforms", "name": "KBank API", "owner": "ธนาคารกสิกรไทย (KBank)",
+      "th": "QR payment, ตรวจสลิป และบริการธนาคารอื่นๆ มี sandbox ให้ทดสอบ", "en": "QR payments, slip verification and other banking services, with a sandbox",
+      "auth": "free-key", "docs": "https://apiportal.kasikornbank.com/",
+      "example": "",
+      "check": { "url": "https://apiportal.kasikornbank.com/", "expect": "" }
+    }
+  ]
+}
