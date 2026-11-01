@@ -44,7 +44,7 @@ curl -s -H 'authorization: Bearer YOUR_TOKEN' 'https://data.tmd.go.th/nwpapi/v1/
 | API | What it gives you | Key | Working |
 |---|---|---|---|
 | [Air4Thai](https://air4thai.pcd.go.th/webV3/)<br><sub>Pollution Control Department</sub> | Latest AQI, PM2.5, PM10, O3, CO and NO2 from monitoring stations nationwide | no key | ✅ ¹ |
-| [GISTDA PM2.5](https://pm25.gistda.or.th/)<br><sub>GISTDA</sub> | PM2.5 by province from satellite data, including the 24-hour average | no key | ✅ |
+| [GISTDA PM2.5](https://pm25.gistda.or.th/)<br><sub>GISTDA</sub> | PM2.5 by province from satellite data, including the 24-hour average | no key | ⚠️ HTTP 503 |
 
 <details><summary>Example requests</summary>
 
@@ -123,7 +123,7 @@ curl -s 'https://api.bitkub.com/api/v3/market/ticker?sym=btc_thb'
 | API | What it gives you | Key | Working |
 |---|---|---|---|
 | [RD VAT Service](https://rdws.rd.go.th/serviceRD3/vatserviceRD3.asmx)<br><sub>Revenue Department</sub> | Look up a VAT-registered business by tax ID: name and address (SOAP, username and password are anonymous) | no key | ✅ |
-| [DBD Open Data](https://opendata.dbd.go.th/)<br><sub>Department of Business Development</sub> | Registered companies, financial statements and business statistics. Some datasets need sign-up | free sign-up | ✅ |
+| [DBD Open Data](https://opendata.dbd.go.th/)<br><sub>Department of Business Development</sub> | Registered companies, financial statements and business statistics. Some datasets need sign-up | free sign-up | ⚠️ HTTP 403 |
 
 <details><summary>Example requests</summary>
 
@@ -139,8 +139,8 @@ curl -s https://rdws.rd.go.th/serviceRD3/vatserviceRD3.asmx -H 'Content-Type: te
 
 | API | What it gives you | Key | Working |
 |---|---|---|---|
-| [data.go.th (CKAN)](https://data.go.th/)<br><sub>DGA</sub> | Search over 40,000 government open datasets through the standard CKAN API | no key | ✅ |
-| [Bangkok Open Data (CKAN)](https://data.bangkok.go.th/)<br><sub>BMA</sub> | Bangkok's open datasets (flood risk points, CCTV, parks and more) through the CKAN API | no key | ✅ |
+| [data.go.th (CKAN)](https://data.go.th/)<br><sub>DGA</sub> | Search over 40,000 government open datasets through the standard CKAN API | no key | ⚠️ HTTP 403 |
+| [Bangkok Open Data (CKAN)](https://data.bangkok.go.th/)<br><sub>BMA</sub> | Bangkok's open datasets (flood risk points, CCTV, parks and more) through the CKAN API | no key | ⚠️ ConnectionResetError |
 
 <details><summary>Example requests</summary>
 

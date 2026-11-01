@@ -44,7 +44,7 @@ curl -s -H 'authorization: Bearer YOUR_TOKEN' 'https://data.tmd.go.th/nwpapi/v1/
 | API | ใช้ทำอะไร | ต้องใช้ key ไหม | ใช้ได้ไหม |
 |---|---|---|---|
 | [Air4Thai](https://air4thai.pcd.go.th/webV3/)<br><sub>กรมควบคุมมลพิษ</sub> | ค่า AQI, PM2.5, PM10, O3, CO, NO2 ล่าสุดจากสถานีตรวจวัดทั่วประเทศ | ไม่ต้องใช้ key | ✅ ¹ |
-| [GISTDA PM2.5](https://pm25.gistda.or.th/)<br><sub>GISTDA</sub> | ค่าฝุ่น PM2.5 รายจังหวัดจากข้อมูลดาวเทียม รวมค่าเฉลี่ย 24 ชั่วโมง | ไม่ต้องใช้ key | ✅ |
+| [GISTDA PM2.5](https://pm25.gistda.or.th/)<br><sub>GISTDA</sub> | ค่าฝุ่น PM2.5 รายจังหวัดจากข้อมูลดาวเทียม รวมค่าเฉลี่ย 24 ชั่วโมง | ไม่ต้องใช้ key | ⚠️ HTTP 503 |
 
 <details><summary>ตัวอย่างการเรียก</summary>
 
@@ -123,7 +123,7 @@ curl -s 'https://api.bitkub.com/api/v3/market/ticker?sym=btc_thb'
 | API | ใช้ทำอะไร | ต้องใช้ key ไหม | ใช้ได้ไหม |
 |---|---|---|---|
 | [RD VAT Service](https://rdws.rd.go.th/serviceRD3/vatserviceRD3.asmx)<br><sub>กรมสรรพากร</sub> | ตรวจสอบผู้ประกอบการจดทะเบียนภาษีมูลค่าเพิ่มจากเลขประจำตัวผู้เสียภาษี ได้ชื่อและที่อยู่ (SOAP, username/password เป็น anonymous) | ไม่ต้องใช้ key | ✅ |
-| [DBD Open Data](https://opendata.dbd.go.th/)<br><sub>กรมพัฒนาธุรกิจการค้า</sub> | ข้อมูลนิติบุคคล งบการเงิน และสถิติธุรกิจ บางชุดต้องสมัคร | สมัครฟรี | ✅ |
+| [DBD Open Data](https://opendata.dbd.go.th/)<br><sub>กรมพัฒนาธุรกิจการค้า</sub> | ข้อมูลนิติบุคคล งบการเงิน และสถิติธุรกิจ บางชุดต้องสมัคร | สมัครฟรี | ⚠️ HTTP 403 |
 
 <details><summary>ตัวอย่างการเรียก</summary>
 
@@ -139,8 +139,8 @@ curl -s https://rdws.rd.go.th/serviceRD3/vatserviceRD3.asmx -H 'Content-Type: te
 
 | API | ใช้ทำอะไร | ต้องใช้ key ไหม | ใช้ได้ไหม |
 |---|---|---|---|
-| [data.go.th (CKAN)](https://data.go.th/)<br><sub>สำนักงานพัฒนารัฐบาลดิจิทัล</sub> | ค้นชุดข้อมูลเปิดภาครัฐกว่า 40,000 ชุด ผ่าน CKAN API มาตรฐาน | ไม่ต้องใช้ key | ✅ |
-| [Bangkok Open Data (CKAN)](https://data.bangkok.go.th/)<br><sub>กรุงเทพมหานคร</sub> | ชุดข้อมูลเปิดของกรุงเทพฯ เช่น จุดเสี่ยงน้ำท่วม กล้อง CCTV สวนสาธารณะ ผ่าน CKAN API | ไม่ต้องใช้ key | ✅ |
+| [data.go.th (CKAN)](https://data.go.th/)<br><sub>สำนักงานพัฒนารัฐบาลดิจิทัล</sub> | ค้นชุดข้อมูลเปิดภาครัฐกว่า 40,000 ชุด ผ่าน CKAN API มาตรฐาน | ไม่ต้องใช้ key | ⚠️ HTTP 403 |
+| [Bangkok Open Data (CKAN)](https://data.bangkok.go.th/)<br><sub>กรุงเทพมหานคร</sub> | ชุดข้อมูลเปิดของกรุงเทพฯ เช่น จุดเสี่ยงน้ำท่วม กล้อง CCTV สวนสาธารณะ ผ่าน CKAN API | ไม่ต้องใช้ key | ⚠️ ConnectionResetError |
 
 <details><summary>ตัวอย่างการเรียก</summary>
 

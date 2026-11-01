@@ -7,8 +7,8 @@
    "note": "cert"
   },
   "gistda-pm25": {
-   "ok": true,
-   "detail": "HTTP 200"
+   "ok": false,
+   "detail": "HTTP 503"
   },
   "tmd-earthquake": {
    "ok": true,
@@ -47,16 +47,16 @@
    "detail": "HTTP 200"
   },
   "dbd": {
-   "ok": true,
-   "detail": "HTTP 200"
+   "ok": false,
+   "detail": "HTTP 403"
   },
   "data-go-th": {
-   "ok": true,
-   "detail": "HTTP 200"
+   "ok": false,
+   "detail": "HTTP 403"
   },
   "data-bangkok": {
-   "ok": true,
-   "detail": "HTTP 200"
+   "ok": false,
+   "detail": "ConnectionResetError"
   },
   "longdo": {
    "ok": true,
