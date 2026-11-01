@@ -44,7 +44,7 @@ curl -s -H 'authorization: Bearer YOUR_TOKEN' 'https://data.tmd.go.th/nwpapi/v1/
 | API | What it gives you | Key | Working |
 |---|---|---|---|
 | [Air4Thai](https://air4thai.pcd.go.th/webV3/)<br><sub>Pollution Control Department</sub> | Latest AQI, PM2.5, PM10, O3, CO and NO2 from monitoring stations nationwide | no key | ✅ ¹ |
-| [GISTDA PM2.5](https://pm25.gistda.or.th/)<br><sub>GISTDA</sub> | PM2.5 by province from satellite data, including the 24-hour average | no key | ⚠️ HTTP 503 |
+| [GISTDA PM2.5](https://pm25.gistda.or.th/)<br><sub>GISTDA</sub> | PM2.5 by province from satellite data, including the 24-hour average | no key | 🇹🇭 ² |
 
 <details><summary>Example requests</summary>
 
@@ -123,7 +123,7 @@ curl -s 'https://api.bitkub.com/api/v3/market/ticker?sym=btc_thb'
 | API | What it gives you | Key | Working |
 |---|---|---|---|
 | [RD VAT Service](https://rdws.rd.go.th/serviceRD3/vatserviceRD3.asmx)<br><sub>Revenue Department</sub> | Look up a VAT-registered business by tax ID: name and address (SOAP, username and password are anonymous) | no key | ✅ |
-| [DBD Open Data](https://opendata.dbd.go.th/)<br><sub>Department of Business Development</sub> | Registered companies, financial statements and business statistics. Some datasets need sign-up | free sign-up | ⚠️ HTTP 403 |
+| [DBD Open Data](https://opendata.dbd.go.th/)<br><sub>Department of Business Development</sub> | Registered companies, financial statements and business statistics. Some datasets need sign-up | free sign-up | 🇹🇭 ² |
 
 <details><summary>Example requests</summary>
 
@@ -139,8 +139,8 @@ curl -s https://rdws.rd.go.th/serviceRD3/vatserviceRD3.asmx -H 'Content-Type: te
 
 | API | What it gives you | Key | Working |
 |---|---|---|---|
-| [data.go.th (CKAN)](https://data.go.th/)<br><sub>DGA</sub> | Search over 40,000 government open datasets through the standard CKAN API | no key | ⚠️ HTTP 403 |
-| [Bangkok Open Data (CKAN)](https://data.bangkok.go.th/)<br><sub>BMA</sub> | Bangkok's open datasets (flood risk points, CCTV, parks and more) through the CKAN API | no key | ⚠️ ConnectionResetError |
+| [data.go.th (CKAN)](https://data.go.th/)<br><sub>DGA</sub> | Search over 40,000 government open datasets through the standard CKAN API | no key | 🇹🇭 ² |
+| [Bangkok Open Data (CKAN)](https://data.bangkok.go.th/)<br><sub>BMA</sub> | Bangkok's open datasets (flood risk points, CCTV, parks and more) through the CKAN API | no key | 🇹🇭 ² |
 
 <details><summary>Example requests</summary>
 
@@ -182,13 +182,16 @@ curl -sG https://data.bangkok.go.th/api/3/action/package_search --data-urlencode
 | [KBank API](https://apiportal.kasikornbank.com/)<br><sub>KBank</sub> | QR payments, slip verification and other banking services, with a sandbox | free sign-up | ✅ |
 
 ¹ Works, but the server sends an incomplete certificate chain. Browsers and curl cope; Python, Java and many HTTP clients fail with `CERTIFICATE_VERIFY_FAILED`. Add the intermediate certificate to your CA bundle rather than turning verification off.
+
+² Blocked from outside Thailand, works from inside (last tested 2026-11-01). If you deploy on a foreign cloud (Vercel, AWS outside Thailand), call it through a server in Thailand.
 <!-- apis:end -->
 
 ## Reading the "Working" column
 
 - **✅** reachable and, for keyless APIs, the response still has the expected shape
 - **⚠️** unreachable or the response changed, with what was seen
-- Checks run from GitHub's servers outside Thailand. Some government sites block foreign traffic, so if you see ⚠️, try from a machine in Thailand.
+- **🇹🇭** blocks traffic from outside Thailand and only works from inside the country. Checks run on GitHub's servers abroad, so they can only see the block; the last test from Thailand is in the note under the table.
+- If another government API shows ⚠️, it may be blocked the same way. Try from a machine in Thailand.
 - For APIs that need a key, only the documentation page is checked.
 
 ## As data

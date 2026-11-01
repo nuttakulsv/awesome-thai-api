@@ -60,11 +60,12 @@ def run_all(apis):
     return {"checked": now, "results": results}
 
 
-def badge(result):
+def badge(result, api=None):
     if result is None:
         return "–"
     if not result["ok"]:
-        return f"⚠️ {result['detail']}"
+        # known to block traffic from outside Thailand: a failure from GitHub's servers says nothing
+        return "🇹🇭 ²" if api and api.get("thailand_only") else f"⚠️ {result['detail']}"
     return "✅ ¹" if result.get("note") == "cert" else "✅"
 
 
@@ -82,7 +83,7 @@ def render(data, status, lang):
         for a in rows:
             owner = a["owner"].split(" (")[0] if th else (re.search(r"\((.+)\)", a["owner"]) or [None, a["owner"]])[1]
             out.append(f"| [{a['name']}]({a['docs']})<br><sub>{owner}</sub> | {a['th' if th else 'en']} | "
-                       f"{AUTH[a['auth']][0 if th else 1]} | {badge(status['results'].get(a['id']))} |")
+                       f"{AUTH[a['auth']][0 if th else 1]} | {badge(status['results'].get(a['id']), a)} |")
         examples = [a for a in rows if a.get("example")]
         if examples:
             out += ["", "<details><summary>" + ("ตัวอย่างการเรียก" if th else "Example requests") + "</summary>", ""]
@@ -98,6 +99,13 @@ def render(data, status, lang):
                            if th else "Works, but the server sends an incomplete certificate chain. Browsers and curl cope; Python, Java and "
                            "many HTTP clients fail with `CERTIFICATE_VERIFY_FAILED`. Add the intermediate certificate to your CA "
                            "bundle rather than turning verification off.") + "\n")
+    blocked = [a for a in data["apis"] if a.get("thailand_only") and not status["results"].get(a["id"], {}).get("ok", True)]
+    if blocked:
+        when = max(a["thailand_only"] for a in blocked)
+        out.append("² " + (f"เรียกจากต่างประเทศไม่ได้ แต่ใช้ได้เมื่อเรียกจากในไทย (ทดสอบล่าสุด {when}) ถ้า deploy บน cloud ต่างประเทศ "
+                           "เช่น Vercel หรือ AWS นอก region ไทย ต้องเรียกผ่านเซิร์ฟเวอร์ในไทย"
+                           if th else f"Blocked from outside Thailand, works from inside (last tested {when}). If you deploy on a "
+                           "foreign cloud (Vercel, AWS outside Thailand), call it through a server in Thailand.") + "\n")
     return "\n".join([f"_{stamp}_", ""] + out).rstrip() + "\n"
 
 
@@ -154,6 +162,11 @@ def test():
     status["results"][ids[2]] = {"ok": True, "detail": "HTTP 200", "note": "cert"}
     th = render(data, status, "th")
     assert "✅ ¹" in th and "CERTIFICATE_VERIFY_FAILED" in th
+    data["apis"][1]["thailand_only"] = "2026-01-01"
+    th = render(data, status, "th")
+    assert "🇹🇭 ²" in th and "ทดสอบล่าสุด 2026-01-01" in th
+    del data["apis"][1]["thailand_only"]
+    th = render(data, status, "th")
     assert "✅" in th and "⚠️ HTTP 503" in th and "ตรวจล่าสุด 2026-01-01" in th, th[:400]
     assert "Last checked 2026-01-01" in en and "| no key |" in en and "Pollution Control Department" in en
     assert "กรมควบคุมมลพิษ" in th and "(Pollution" not in th

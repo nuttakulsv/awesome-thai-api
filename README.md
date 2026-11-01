@@ -44,7 +44,7 @@ curl -s -H 'authorization: Bearer YOUR_TOKEN' 'https://data.tmd.go.th/nwpapi/v1/
 | API | ใช้ทำอะไร | ต้องใช้ key ไหม | ใช้ได้ไหม |
 |---|---|---|---|
 | [Air4Thai](https://air4thai.pcd.go.th/webV3/)<br><sub>กรมควบคุมมลพิษ</sub> | ค่า AQI, PM2.5, PM10, O3, CO, NO2 ล่าสุดจากสถานีตรวจวัดทั่วประเทศ | ไม่ต้องใช้ key | ✅ ¹ |
-| [GISTDA PM2.5](https://pm25.gistda.or.th/)<br><sub>GISTDA</sub> | ค่าฝุ่น PM2.5 รายจังหวัดจากข้อมูลดาวเทียม รวมค่าเฉลี่ย 24 ชั่วโมง | ไม่ต้องใช้ key | ⚠️ HTTP 503 |
+| [GISTDA PM2.5](https://pm25.gistda.or.th/)<br><sub>GISTDA</sub> | ค่าฝุ่น PM2.5 รายจังหวัดจากข้อมูลดาวเทียม รวมค่าเฉลี่ย 24 ชั่วโมง | ไม่ต้องใช้ key | 🇹🇭 ² |
 
 <details><summary>ตัวอย่างการเรียก</summary>
 
@@ -123,7 +123,7 @@ curl -s 'https://api.bitkub.com/api/v3/market/ticker?sym=btc_thb'
 | API | ใช้ทำอะไร | ต้องใช้ key ไหม | ใช้ได้ไหม |
 |---|---|---|---|
 | [RD VAT Service](https://rdws.rd.go.th/serviceRD3/vatserviceRD3.asmx)<br><sub>กรมสรรพากร</sub> | ตรวจสอบผู้ประกอบการจดทะเบียนภาษีมูลค่าเพิ่มจากเลขประจำตัวผู้เสียภาษี ได้ชื่อและที่อยู่ (SOAP, username/password เป็น anonymous) | ไม่ต้องใช้ key | ✅ |
-| [DBD Open Data](https://opendata.dbd.go.th/)<br><sub>กรมพัฒนาธุรกิจการค้า</sub> | ข้อมูลนิติบุคคล งบการเงิน และสถิติธุรกิจ บางชุดต้องสมัคร | สมัครฟรี | ⚠️ HTTP 403 |
+| [DBD Open Data](https://opendata.dbd.go.th/)<br><sub>กรมพัฒนาธุรกิจการค้า</sub> | ข้อมูลนิติบุคคล งบการเงิน และสถิติธุรกิจ บางชุดต้องสมัคร | สมัครฟรี | 🇹🇭 ² |
 
 <details><summary>ตัวอย่างการเรียก</summary>
 
@@ -139,8 +139,8 @@ curl -s https://rdws.rd.go.th/serviceRD3/vatserviceRD3.asmx -H 'Content-Type: te
 
 | API | ใช้ทำอะไร | ต้องใช้ key ไหม | ใช้ได้ไหม |
 |---|---|---|---|
-| [data.go.th (CKAN)](https://data.go.th/)<br><sub>สำนักงานพัฒนารัฐบาลดิจิทัล</sub> | ค้นชุดข้อมูลเปิดภาครัฐกว่า 40,000 ชุด ผ่าน CKAN API มาตรฐาน | ไม่ต้องใช้ key | ⚠️ HTTP 403 |
-| [Bangkok Open Data (CKAN)](https://data.bangkok.go.th/)<br><sub>กรุงเทพมหานคร</sub> | ชุดข้อมูลเปิดของกรุงเทพฯ เช่น จุดเสี่ยงน้ำท่วม กล้อง CCTV สวนสาธารณะ ผ่าน CKAN API | ไม่ต้องใช้ key | ⚠️ ConnectionResetError |
+| [data.go.th (CKAN)](https://data.go.th/)<br><sub>สำนักงานพัฒนารัฐบาลดิจิทัล</sub> | ค้นชุดข้อมูลเปิดภาครัฐกว่า 40,000 ชุด ผ่าน CKAN API มาตรฐาน | ไม่ต้องใช้ key | 🇹🇭 ² |
+| [Bangkok Open Data (CKAN)](https://data.bangkok.go.th/)<br><sub>กรุงเทพมหานคร</sub> | ชุดข้อมูลเปิดของกรุงเทพฯ เช่น จุดเสี่ยงน้ำท่วม กล้อง CCTV สวนสาธารณะ ผ่าน CKAN API | ไม่ต้องใช้ key | 🇹🇭 ² |
 
 <details><summary>ตัวอย่างการเรียก</summary>
 
@@ -182,13 +182,16 @@ curl -sG https://data.bangkok.go.th/api/3/action/package_search --data-urlencode
 | [KBank API](https://apiportal.kasikornbank.com/)<br><sub>ธนาคารกสิกรไทย</sub> | QR payment, ตรวจสลิป และบริการธนาคารอื่นๆ มี sandbox ให้ทดสอบ | สมัครฟรี | ✅ |
 
 ¹ ใช้ได้ แต่เซิร์ฟเวอร์ส่งใบรับรอง SSL มาไม่ครบ เบราว์เซอร์กับ curl ไม่มีปัญหา แต่ Python, Java และ HTTP client หลายตัวจะเจอ `CERTIFICATE_VERIFY_FAILED` ให้เพิ่ม intermediate certificate ใน CA bundle เอง อย่าปิดการตรวจใบรับรอง
+
+² เรียกจากต่างประเทศไม่ได้ แต่ใช้ได้เมื่อเรียกจากในไทย (ทดสอบล่าสุด 2026-11-01) ถ้า deploy บน cloud ต่างประเทศ เช่น Vercel หรือ AWS นอก region ไทย ต้องเรียกผ่านเซิร์ฟเวอร์ในไทย
 <!-- apis:end -->
 
 ## อ่านคอลัมน์ "ใช้ได้ไหม" ยังไง
 
 - **✅** เรียกได้ และ (สำหรับ API ที่ไม่ต้องใช้ key) ข้อมูลที่ได้ยังมีหน้าตาเหมือนเดิม
 - **⚠️** เรียกไม่ได้ หรือข้อมูลเปลี่ยนรูปแบบไปแล้ว พร้อมบอกว่าเจออะไร
-- สคริปต์รันจากเซิร์ฟเวอร์ของ GitHub ที่อยู่ต่างประเทศ เว็บรัฐบางแห่งบล็อกการเข้าจากต่างประเทศ ถ้าเห็น ⚠️ ให้ลองเรียกจากเครื่องในไทยอีกที
+- **🇹🇭** บล็อกการเรียกจากต่างประเทศ ใช้ได้เฉพาะจากในไทย สคริปต์รันจากเซิร์ฟเวอร์ของ GitHub ที่อยู่ต่างประเทศ เลยบอกได้แค่ว่าโดนบล็อก ส่วนวันที่ทดสอบจากในไทยล่าสุดอยู่ในหมายเหตุใต้ตาราง
+- ถ้าเห็น ⚠️ กับ API ของรัฐตัวอื่น อาจโดนบล็อกแบบเดียวกัน ให้ลองเรียกจากเครื่องในไทยอีกที
 - API ที่ต้องสมัคร key จะตรวจแค่ว่าหน้าเอกสารยังเปิดได้
 
 ## ใช้งานแบบไม่ต้องอ่าน README
