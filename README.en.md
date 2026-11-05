@@ -7,7 +7,7 @@ Thai APIs that actually work: government services and the platforms Thai develop
 Most lists of Thai APIs you'll find are half dead links. This one **calls every API daily** and updates the "Working" column itself. For APIs that need no key it also checks that the response still looks the same, and each of them comes with a `curl` you can paste right away.
 
 <!-- apis:start -->
-_Last checked 2026-11-04 (UTC) from GitHub's servers outside Thailand_
+_Last checked 2026-11-05 (UTC) from GitHub's servers outside Thailand_
 
 ### Weather and disasters
 
@@ -82,7 +82,7 @@ curl -s https://api-v3.thaiwater.net/api/v1/thaiwater30/public/waterlevel_load
 
 | API | What it gives you | Key | Working |
 |---|---|---|---|
-| [PTT OR Oil Price](https://orapiweb.pttor.com/oilservice/OilPrice.asmx)<br><sub>PTT OR</sub> | Today's retail fuel prices at PTT Station (SOAP) | no key | ✅ |
+| [PTT OR Oil Price](https://orapiweb.pttor.com/oilservice/OilPrice.asmx)<br><sub>PTT OR</sub> | Today's retail fuel prices at PTT Station (SOAP) | no key | ⚠️ HTTP 429 |
 | [Bangchak Oil Price](https://www.bangchak.co.th/th/oilprice)<br><sub>Bangchak</sub> | Bangchak fuel prices today and tomorrow (JSON) | no key | ✅ |
 
 <details><summary>Example requests</summary>
