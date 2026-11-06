@@ -7,7 +7,7 @@
 ลิสต์ API ไทยส่วนใหญ่ที่เจอในเน็ตมักลิงก์เสียไปครึ่งหนึ่งแล้ว ลิสต์นี้ต่างตรงที่**มีสคริปต์เรียกทุก API ให้ทุกวัน** แล้วอัปเดตคอลัมน์ "ใช้ได้ไหม" ให้เอง ตัวที่ไม่ต้องใช้ key จะตรวจถึงขั้นว่าข้อมูลที่ตอบกลับมายังหน้าตาเหมือนเดิม และทุกตัวที่ไม่ต้องใช้ key มีตัวอย่าง `curl` ให้ลองได้ทันที
 
 <!-- apis:start -->
-_ตรวจล่าสุด 2026-11-05 (UTC) จากเซิร์ฟเวอร์ของ GitHub ในต่างประเทศ_
+_ตรวจล่าสุด 2026-11-06 (UTC) จากเซิร์ฟเวอร์ของ GitHub ในต่างประเทศ_
 
 ### สภาพอากาศและภัยพิบัติ
 
@@ -82,7 +82,7 @@ curl -s https://api-v3.thaiwater.net/api/v1/thaiwater30/public/waterlevel_load
 
 | API | ใช้ทำอะไร | ต้องใช้ key ไหม | ใช้ได้ไหม |
 |---|---|---|---|
-| [PTT OR Oil Price](https://orapiweb.pttor.com/oilservice/OilPrice.asmx)<br><sub>ปตท. น้ำมันและการค้าปลีก</sub> | ราคาน้ำมันขายปลีกวันนี้ของ PTT Station (SOAP) | ไม่ต้องใช้ key | ⚠️ HTTP 429 |
+| [PTT OR Oil Price](https://orapiweb.pttor.com/oilservice/OilPrice.asmx)<br><sub>ปตท. น้ำมันและการค้าปลีก</sub> | ราคาน้ำมันขายปลีกวันนี้ของ PTT Station (SOAP) | ไม่ต้องใช้ key | ✅ |
 | [Bangchak Oil Price](https://www.bangchak.co.th/th/oilprice)<br><sub>บางจาก คอร์ปอเรชั่น</sub> | ราคาน้ำมันวันนี้และพรุ่งนี้ของบางจาก (JSON) | ไม่ต้องใช้ key | ✅ |
 
 <details><summary>ตัวอย่างการเรียก</summary>

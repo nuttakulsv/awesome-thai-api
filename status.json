@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-05",
+ "checked": "2026-11-06",
  "results": {
   "air4thai": {
    "ok": true,
@@ -27,8 +27,8 @@
    "detail": "HTTP 200"
   },
   "ptt-oil": {
-   "ok": false,
-   "detail": "HTTP 429"
+   "ok": true,
+   "detail": "HTTP 200"
   },
   "bangchak-oil": {
    "ok": true,
