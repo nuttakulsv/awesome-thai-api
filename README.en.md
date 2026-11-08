@@ -7,7 +7,7 @@ Thai APIs that actually work: government services and the platforms Thai develop
 Most lists of Thai APIs you'll find are half dead links. This one **calls every API daily** and updates the "Working" column itself. For APIs that need no key it also checks that the response still looks the same, and each of them comes with a `curl` you can paste right away.
 
 <!-- apis:start -->
-_Last checked 2026-11-07 (UTC) from GitHub's servers outside Thailand_
+_Last checked 2026-11-08 (UTC) from GitHub's servers outside Thailand_
 
 ### Weather and disasters
 
